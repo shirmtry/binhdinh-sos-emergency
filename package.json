@@ -1,0 +1,16 @@
+{
+  "name": "binhdinh-sos-emergency",
+  "version": "1.0.0",
+  "description": "SOS cuu ho khan cap Binh Dinh - mua mua lu 2026 - HTK 0396241674",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "dev": "node api/index.js"
+  },
+  "author": "HTK <htk.contact@gmail.com> (https://zalo.me/0396241674)",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}

@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+<section class="hero">
+  <h1>🆘 SOS Cứu hộ khẩn cấp Bình Định</h1>
+  <p class="lead">
+    Tháng 11/2026, bão số 9 và số 10 liên tiếp đổ bộ Quy Nhơn – Phù Cát – Hoài Nhơn, gây thiệt hại nặng nề cho Bình Định.
+    Lũ sông Kôn dâng cao nhấn chìm nhiều vùng của Tuy Phước, An Nhơn, trong khi An Lão, Vĩnh Thạnh, Tây Sơn xảy ra sạt lở nghiêm trọng.
+    Nhiều khu vực mất điện diện rộng 3–7 ngày, tàu cá gặp nạn ngoài khơi khi biển động cấp 7–8, khiến người dân bị cô lập cần cầu cứu nhanh.
+    Ứng dụng này giúp bạn gửi yêu cầu SOS chỉ trong vài thao tác và tra cứu ngay 30 đầu số cứu hộ của tỉnh.
+    Khi nguy cấp tính mạng, hãy luôn gọi <a href="tel:112"><strong>112</strong></a> trước tiên.
+  </p>
+  <p class="updated">Cập nhật: 09/11/2026</p>
+  <div class="hero-actions">
+    <a class="btn btn-danger" href="/sos">🚨 Gửi yêu cầu SOS ngay</a>
+    <a class="btn" href="/hotlines">📖 Xem 30 đầu số cứu hộ</a>
+    <a class="btn btn-outline" href="tel:0396241674">📞 Hotline HTK: 0396241674</a>
+  </div>
+</section>
+
+<section class="cards">
+  <div class="card danger">
+    <h3>🌊 Lũ sông Kôn</h3>
+    <p>Tuy Phước, An Nhơn ngập sâu — cần di dời khẩn cấp đến điểm trú ẩn cao ráo.</p>
+  </div>
+  <div class="card warning">
+    <h3>🌀 Bão số 9, 10/2026</h3>
+    <p>Quy Nhơn – Phù Cát – Hoài Nhơn: nhà tốc mái, cây đổ, cô lập nhiều thôn xóm.</p>
+  </div>
+  <div class="card warning">
+    <h3>⛰️ Sạt lở vùng núi</h3>
+    <p>An Lão, Vĩnh Thạnh, Tây Sơn: đường chia cắt, báo vị trí chính xác khi cầu cứu.</p>
+  </div>
+  <div class="card danger">
+    <h3>⚡ Mất điện 3–7 ngày</h3>
+    <p>Tiết kiệm pin điện thoại, ưu tiên gọi 112 / 115, nhắn Zalo HTK 0396241674.</p>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>📞 Đầu số khẩn cấp cần nhớ</h2>
+  <p class="mock-label"><%= mockLabel %></p>
+  <div class="hotline-grid">
+    <% hotlines.forEach(function(h) { %>
+      <a class="hotline-item" href="tel:<%= h.so.replace(/\./g, '') %>">
+        <span class="hl-so"><%= h.so %></span>
+        <span class="hl-ten"><%= h.ten %></span>
+      </a>
+    <% }); %>
+  </div>
+  <p><a href="/hotlines">→ Xem đầy đủ 30 đầu số cứu hộ Bình Định</a></p>
+</section>
+
+<section class="panel">
+  <h2>✅ Hướng dẫn cầu cứu nhanh</h2>
+  <ol class="steps">
+    <li>Giữ bình tĩnh, đưa người già và trẻ em đến vị trí cao, an toàn.</li>
+    <li>Gọi <a href="tel:112">112</a> (cứu hộ) hoặc <a href="tel:115">115</a> (cấp cứu); nói rõ họ tên, vị trí, số người mắc kẹt.</li>
+    <li>Nếu mất sóng, gửi yêu cầu qua form <a href="/sos">SOS</a> — dữ liệu lưu trên máy để gửi lại khi có mạng.</li>
+    <li>Bật đèn pin, treo vải màu sáng để lực lượng cứu hộ định vị.</li>
+    <li>Liên hệ hỗ trợ cộng đồng: Hotline/Zalo HTK <a href="tel:0396241674">0396241674</a>.</li>
+  </ol>
+</section>
+<%- include('partials/footer') %>

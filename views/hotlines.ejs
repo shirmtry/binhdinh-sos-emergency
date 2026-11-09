@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<section class="panel">
+  <h1>📖 Danh bạ <%= total %> đầu số cứu hộ Bình Định</h1>
+  <p class="mock-label"><%= mockLabel %></p>
+  <p>⚠️ Chỉ <strong>112, 113, 114, 115</strong> và hotline HTK <strong>0396241674</strong> là đầu số hoạt động. Các số dạng <code>0256.xxx.xxx</code> là <strong>số mô phỏng</strong> theo cấu trúc đầu số Bình Định, phục vụ minh hoạ danh bạ cứu hộ mùa mưa lũ 2026.</p>
+
+  <div class="filter-row">
+    <label for="filter-nhom">Lọc theo nhóm:</label>
+    <select id="filter-nhom">
+      <option value="">Tất cả (<%= total %>)</option>
+      <% nhoms.forEach(function(n) { %>
+        <option value="<%= n %>"><%= n %></option>
+      <% }); %>
+    </select>
+    <input type="search" id="filter-text" placeholder="🔍 Tìm tên đơn vị hoặc số...">
+  </div>
+
+  <div class="table-wrap">
+    <table id="hotline-table">
+      <thead>
+        <tr><th>#</th><th>Đơn vị</th><th>Số điện thoại</th><th>Nhóm</th><th>Ghi chú</th><th>Loại</th></tr>
+      </thead>
+      <tbody>
+        <% hotlines.forEach(function(h, i) { %>
+        <tr data-nhom="<%= h.nhom %>">
+          <td><%= i + 1 %></td>
+          <td><strong><%= h.ten %></strong></td>
+          <td><a class="hl-call" href="tel:<%= h.so.replace(/\./g, '') %>">📞 <%= h.so %></a></td>
+          <td><%= h.nhom %></td>
+          <td><%= h.ghichu %></td>
+          <td><% if (h.real) { %><span class="badge badge-real">Hoạt động</span><% } else { %><span class="badge badge-mock">Mô phỏng</span><% } %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <p id="filter-count" class="muted"></p>
+</section>
+<script src="/hotlines.js"></script>
+<%- include('partials/footer') %>
