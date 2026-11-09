@@ -8,10 +8,20 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '..', 'views'));
 
-// Vercel rewrite "/(.*)" -> "/api/index/$1" keeps the prefix in req.url.
-// Strip it before routing so Express routes match the original path.
+// Vercel rewrite "/(.*)" -> "/api/index?__path=$1": @vercel/node only matches
+// the exact function path, so the original path travels in the __path query
+// param. Restore req.url before routing. Also strip a literal "/api/index"
+// prefix if present (defensive, e.g. direct hits).
 app.use((req, res, next) => {
-  if (req.url === '/api/index' || req.url.startsWith('/api/index/')) {
+  const qIdx = req.url.indexOf('?');
+  const qs = qIdx >= 0 ? req.url.slice(qIdx + 1) : '';
+  const params = new URLSearchParams(qs);
+  if (params.has('__path')) {
+    const p = params.get('__path').replace(/^\/+/, '');
+    params.delete('__path');
+    const rest = params.toString();
+    req.url = '/' + p + (rest ? '?' + rest : '');
+  } else if (req.url === '/api/index' || req.url.startsWith('/api/index/')) {
     req.url = req.url.slice('/api/index'.length) || '/';
   } else if (req.url.startsWith('/api/index?')) {
     req.url = req.url.slice('/api/index'.length);
