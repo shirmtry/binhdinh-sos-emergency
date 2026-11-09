@@ -41,7 +41,8 @@ vercel.json         # rewrites + includeFiles {views,public}/**
 
 ## 🔗 Deploy
 
-- Vercel: xem `deploy_url.txt` (cập nhật sau khi deploy production)
+- Vercel: **https://binhdinh-sos-emergency.vercel.app** (production, deploy 09/11/2026)
+- GitHub: https://github.com/shirmtry/binhdinh-sos-emergency
 
 ## 📞 Liên hệ HTK – 0396241674 – 09/11/2026
 
